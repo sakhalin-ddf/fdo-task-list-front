@@ -3,13 +3,17 @@ import TaskItem from './task-item';
 import PropTypes from 'prop-types';
 import noop from '../utils/noop';
 
-function TaskList({tasks, onUpdate}) {
+function TaskList({tasks, onUpdate, onRemove}) {
   return <div className="task-list">
     <ul>
       {
         tasks.map(task => (
           <li key={task.id}>
-            <TaskItem task={task} onUpdate={onUpdate} />
+            <TaskItem
+              task={task}
+              onUpdate={onUpdate}
+              onRemove={onRemove}
+            />
           </li>
         ))
       }
@@ -26,10 +30,12 @@ TaskList.propTypes = {
     updated_at: PropTypes.string,
   })),
   onUpdate: PropTypes.func,
+  onRemove: PropTypes.func,
 };
 
 TaskList.defaultProps = {
   onUpdate: noop,
+  onRemove: noop,
 };
 
 export default TaskList;

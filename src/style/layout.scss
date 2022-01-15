@@ -21,21 +21,150 @@ html, body {
   max-width: 1000px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 25px;
+  padding: 0;
   background-color: white;
+
+  h1 {
+    margin: 0 25px;
+    font-size: 32px;
+    font-weight: 700;
+  }
 }
 
-h1 {
-  margin: 0 0 25px;
-  font-size: 32px;
-  font-weight: 700;
+.logo-wrapper {
+  margin: 0 0 15px;
+
+  img {
+    display: block;
+    margin: 0 auto 0 0;
+    width: 320px;
+  }
 }
 
-h2 {
-  margin: 0 0 20px;
-  font-size: 28px;
-  font-weight: 700;
+.task-form {
+  form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding: 25px;
+
+    input[type="text"] {
+      display: block;
+      padding: 12px 15px 13px;
+      flex-grow: 1;
+      height: 48px;
+    }
+
+    button {
+      display: block;
+      margin: auto;
+      padding: 10px 15px;
+      height: 48px;
+      color: white;
+      border: none;
+      outline: none;
+      background-color: #0c54a0;
+      cursor: pointer;
+
+      &:active, &:hover {
+        background-color: #1b62af;
+      }
+    }
+  }
 }
 
 .task-list {
+  padding: 25px;
+
+  ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.task-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 0 5px;
+
+  .task-id {
+    display: block;
+    width: 16px;
+    height: 24px;
+    margin: 0 5px 0 0;
+    line-height: 24px;
+    font-size: 12px;
+    text-align: right;
+  }
+
+  .task-checkbox-input {
+    margin: 0 5px 0 0;
+    width: 24px;
+    height: 24px;
+    background-color: #ffffff;
+    border: 2px solid #cccccc;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-image: url(../images/check.svg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 14px;
+      opacity: 0;
+    }
+
+    &:hover {
+      &:before {
+        opacity: 0.5;
+      }
+    }
+
+    &.checked {
+      border-color: #0c54a0;
+
+      &:before {
+        opacity: 1;
+      }
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+  }
+
+  .task-text-input {
+    margin: 0 5px 0 0;
+    width: 320px;
+
+    input {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 6px 12px;
+    }
+  }
+
+  .task-controls {
+    margin: 0 15px 0 0;
+
+    button {
+      padding: 6px 12px;
+    }
+  }
+
+  .task-time {
+    font-size: 12px;
+    color: #555555;
+  }
 }

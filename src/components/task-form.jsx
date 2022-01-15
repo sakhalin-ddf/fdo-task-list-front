@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import noop from '../utils/noop';
-import apiClient from '../api/api-client';
 
 function TaskForm({onCreate}) {
   const [text, setText] = useState('');
@@ -17,13 +16,9 @@ function TaskForm({onCreate}) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    apiClient
-      .postTask({text})
-      .then(({data: task}) => {
-        resetForm();
+    onCreate({text});
 
-        onCreate(task);
-      });
+    resetForm();
   }
 
   return <div className="task-form">
@@ -32,6 +27,8 @@ function TaskForm({onCreate}) {
         type="text"
         value={text}
         onChange={handleChangeText}
+        placeholder="Input new task name here..."
+        required
       />
 
       <button type="submit">Create task</button>
