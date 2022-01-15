@@ -30,10 +30,10 @@ function buildFetchOptions(method, query, body, headers = {}) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json; charset=utf8',
-      ...headers
+      ...headers,
     },
     credentials: 'same-origin',
-    cache: 'default'
+    cache: 'default',
   };
 
   if (['POST', 'PUT'].indexOf(method) !== -1) {
@@ -85,14 +85,14 @@ export default class RestClient {
                 reject({
                   response,
                   json,
-                  message: json.message || response.statusText
+                  message: json.message || response.statusText,
                 });
               })
               .catch(() => {
                 reject({
                   response,
                   json: null,
-                  message: response.statusText
+                  message: response.statusText,
                 });
               });
 
@@ -105,7 +105,7 @@ export default class RestClient {
               reject({
                 response,
                 json: null,
-                message: 'Response not in json format'
+                message: 'Response not in json format',
               });
             });
         })
@@ -115,7 +115,7 @@ export default class RestClient {
           reject({
             response: null,
             json: null,
-            message: 'Request failed'
+            message: 'Request failed',
           });
         });
     });
